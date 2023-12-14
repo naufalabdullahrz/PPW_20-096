@@ -1,0 +1,1354 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Crawling Data Berita Online &#8212; PPW</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Crawlingberita_detikinews';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Preprocessing dan implementasi Cosinus Similarity" href="preprocessingberita.html" />
+    <link rel="prev" title="LDA Topic Modelling" href="lda_.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="PPW - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="PPW - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Penambangan Web
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crawling_trunojoyo.html">Crawling PTA Trunojoyo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Preprocessing_Crawling.html">Preprocessing Data Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lda_.html">LDA Topic Modelling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Data Berita Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessingberita.html">Preprocessing dan implementasi Cosinus Similarity</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="KatakunciPPW-detikinews.com_20-096.html">Ekstraksi Kata Kunci pada dokumen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UAS.html"><strong>UAS</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCrawlingberita_detikinews.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Crawlingberita_detikinews.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Crawling Data Berita Online</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-beautifulsoup4">Install beautifulsoup4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-library">Install library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data-dari-detikinews-com">Crawling data dari detikinews.com</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="crawling-data-berita-online">
+<h1>Crawling Data Berita Online<a class="headerlink" href="#crawling-data-berita-online" title="Permalink to this heading">#</a></h1>
+<section id="install-beautifulsoup4">
+<h2>Install beautifulsoup4<a class="headerlink" href="#install-beautifulsoup4" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (4.11.2)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4) (2.5)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-2-d5df0069828e&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="o">=</span><span class="mi">120000</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="w">   </span><span class="sd">&quot;&quot;&quot;Mount your Google Drive at the specified mountpoint path.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">103</span>   <span class="k">return</span> <span class="n">_mount</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>       <span class="n">mountpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>       <span class="n">force_remount</span><span class="o">=</span><span class="n">force_remount</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>   <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>   <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">96</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">if</span> <span class="p">(</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="install-library">
+<h2>Install library<a class="headerlink" href="#install-library" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="crawling-data-dari-detikinews-com">
+<h2>Crawling data dari <a class="reference external" href="http://detikinews.com">detikinews.com</a><a class="headerlink" href="#crawling-data-dari-detikinews-com" title="Permalink to this heading">#</a></h2>
+<p>Melakukan Crawling data pada website <a class="reference external" href="http://detikinews.com">detikinews.com</a> mengambil beberapa kategori yaitu Politik, Sosial dan Olahraga dari 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daftar kategori yang dapat diisi custom sesuai kebutuhan</span>
+<span class="n">kategori</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Politik&#39;</span><span class="p">,</span><span class="s1">&#39;Sosial&#39;</span><span class="p">,</span><span class="s1">&#39;Olahraga&#39;</span><span class="p">]</span>
+
+<span class="c1"># Jumlah data yang diambil per kategori</span>
+<span class="n">jumlah_data_per_kategori</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># List untuk menyimpan data</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Looping untuk setiap kategori</span>
+<span class="k">for</span> <span class="n">kategori_terpilih</span> <span class="ow">in</span> <span class="n">kategori</span><span class="p">:</span>
+    <span class="n">katakunci</span> <span class="o">=</span> <span class="n">kategori_terpilih</span>
+
+    <span class="c1"># Looping untuk setiap halaman</span>
+    <span class="k">for</span> <span class="n">halaman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">jumlah_data_per_kategori</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 10 berita per halaman</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.detikinews.com/page/</span><span class="si">{}</span><span class="s2">/?s=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">halaman</span><span class="p">,</span> <span class="n">katakunci</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&#39;</span>
+        <span class="p">}</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="s1">&#39;listing listing-blog listing-blog-5 clearfix&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Looping untuk setiap berita dalam halaman tertentu</span>
+        <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="n">judul</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;post-title post-url&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="n">tanggal_tag</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">)</span>
+            <span class="n">tanggal</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">tanggal_tag</span><span class="p">:</span>
+                <span class="n">tanggal</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tanggal_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+
+            <span class="n">link</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;post-title post-url&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">link</span><span class="p">:</span>
+                <span class="n">href</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">href</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+                <span class="n">berita_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+
+                <span class="n">konten_tag</span> <span class="o">=</span> <span class="n">berita_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="s1">&#39;entry-content clearfix single-post-content&#39;</span><span class="p">)</span>
+                <span class="n">konten</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="k">if</span> <span class="n">konten_tag</span><span class="p">:</span>
+                    <span class="n">konten</span> <span class="o">=</span> <span class="n">konten_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="c1"># Menambahkan data ke dalam list</span>
+                <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Kategori&#39;</span><span class="p">:</span> <span class="n">katakunci</span><span class="p">,</span> <span class="s1">&#39;Judul&#39;</span><span class="p">:</span> <span class="n">judul</span><span class="p">,</span> <span class="s1">&#39;Tanggal&#39;</span><span class="p">:</span> <span class="n">tanggal</span><span class="p">,</span> <span class="s1">&#39;Link&#39;</span><span class="p">:</span> <span class="n">href</span><span class="p">,</span> <span class="s1">&#39;Konten&#39;</span><span class="p">:</span> <span class="n">konten</span><span class="p">})</span>
+
+<span class="c1"># Membuat dataframe dari list data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+
+<span class="c1"># Menyimpan dataframe ke dalam file CSV</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/penambangan_web/hasil/databerita.csv&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data berhasil diambil.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil diambil.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menampilkan-data">
+<h2>Menampilkan data<a class="headerlink" href="#menampilkan-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/penambangan_web/hasil/databerita.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-9f0b0e55-ae12-4ba4-b7cb-147a47d05df3" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Kategori</th>
+      <th>Judul</th>
+      <th>Tanggal</th>
+      <th>Link</th>
+      <th>Konten</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Politik</td>
+      <td>Buka Pembekalan Adat, Bupati Rohil Ajak Calon ...</td>
+      <td>Jun 12, 2023</td>
+      <td>https://www.detikinews.com/buka-pembekalan-ada...</td>
+      <td>Rokan Hilir, detikinews.com — Bupati Rokan Hil...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Politik</td>
+      <td>DPRD Kepulauan Meranti Gelar Rapat Paripurna P...</td>
+      <td>Nov 18, 2022</td>
+      <td>https://www.detikinews.com/dprd-kepulauan-mera...</td>
+      <td>SELATPANJANG, detikinews.com – DPRD Kepulauan ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Politik</td>
+      <td>Bupati Siak bersama Forkopimda Ikuti Upacara H...</td>
+      <td>Jun 1, 2022</td>
+      <td>https://www.detikinews.com/bupati-siak-bersama...</td>
+      <td>SIAK, detikinews.com — Bupati Siak Alfedri, di...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Politik</td>
+      <td>Bupati H.M. Adil Akan Salurkan Dana BLT Rp200r...</td>
+      <td>Sep 24, 2021</td>
+      <td>https://www.detikinews.com/bupati-h-m-adil-aka...</td>
+      <td>Meranti, detikinews.com — Sesuai Program dan J...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Politik</td>
+      <td>Wakil Bupati Bagus Santoso Sambut Kunjungan Si...</td>
+      <td>Mei 5, 2021</td>
+      <td>https://www.detikinews.com/wakil-bupati-bagus-...</td>
+      <td>Bengkalis, Detikinews.com — Pengurus Dewan Pim...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Politik</td>
+      <td>H. Sari Antoni Kembali Terpilih Pada Musda V S...</td>
+      <td>Agu 21, 2020</td>
+      <td>https://www.detikinews.com/h-sari-antoni-kemba...</td>
+      <td>PASIR PENGARAIAN, Detikinews.com — Dewan Pimpi...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Politik</td>
+      <td>Lipun Apresisasi Polda Riau Dalam Penegakan Hu...</td>
+      <td>Feb 19, 2020</td>
+      <td>https://www.detikinews.com/lipun-apresisasi-po...</td>
+      <td>BENGKALIS, Detikinews.com —  Pasca pemanggilan...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sosial</td>
+      <td>Mahasiswa KKN UNRI Desa Sungai Batang Gelar So...</td>
+      <td>Agu 18, 2023</td>
+      <td>https://www.detikinews.com/mahasiswa-kkn-unri-...</td>
+      <td>BENGKALIS, detikinews.com – Guna meningkatkan ...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sosial</td>
+      <td>Bujang Kampung Fokus Pelayanan Sosial dan Kepe...</td>
+      <td>Jul 16, 2022</td>
+      <td>https://www.detikinews.com/bujang-kampung-foku...</td>
+      <td>SIAK, detikinews.com — Pemerintah kabupaten Si...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Sosial</td>
+      <td>Sinergi di Bidang Layanan Administrasi Kependu...</td>
+      <td>Jul 9, 2021</td>
+      <td>https://www.detikinews.com/sinergi-di-bidang-l...</td>
+      <td>SIAK, detikinews.com — Pemerintah Kabupaten Si...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Sosial</td>
+      <td>Bupati Siak Buka Sosialisasi Bentuk KBD dan Sa...</td>
+      <td>Jun 12, 2020</td>
+      <td>https://www.detikinews.com/bupati-siak-buka-so...</td>
+      <td>SIAK, Detikinews.com — Bupati Siak Alfedri mem...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Sosial</td>
+      <td>Ini Cara Kades Pulau Gadang Sosialisasikan Pen...</td>
+      <td>Mar 25, 2020</td>
+      <td>https://www.detikinews.com/ini-cara-kades-pula...</td>
+      <td>PULAU GADANG, Detikinews.com – Untuk menangkal...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Sosial</td>
+      <td>Kapolres Rohul,AKBP.Dasmin Ginting SIK, dan Pe...</td>
+      <td>Feb 2, 2020</td>
+      <td>https://www.detikinews.com/__trashed/</td>
+      <td>Rohul, Buletininews.com — Luar biasa Kapolres ...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Sosial</td>
+      <td>200 Warga Rokan Hilir Ikuti Operasi Mata Katar...</td>
+      <td>Jul 21, 2023</td>
+      <td>https://www.detikinews.com/200-warga-rokan-hil...</td>
+      <td>Rohil, detikinews.com — Sebanyak 200 warga Rok...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Sosial</td>
+      <td>Dukung Enam Fondasi Kemampuan Anak Usia Dini, ...</td>
+      <td>Jun 4, 2023</td>
+      <td>https://www.detikinews.com/dukung-enam-fondasi...</td>
+      <td>INHU, detikinews.com – Selaku Bunda PAUD Indra...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Sosial</td>
+      <td>Bukan Isapan Jempol, Bupati Rohil Akan Segera ...</td>
+      <td>Mei 8, 2023</td>
+      <td>https://www.detikinews.com/bukan-isapan-jempol...</td>
+      <td>Rohil, detikinews.com- Penyediaan internet mur...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Sosial</td>
+      <td>Pemkab Inhu Laksanakan Musrembang RKPD 2024 Ti...</td>
+      <td>Jan 30, 2023</td>
+      <td>https://www.detikinews.com/pemkab-inhu-laksana...</td>
+      <td>INHU, detikinewscom — Pemerintah Daerah Kabupa...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Sosial</td>
+      <td>Bapemperda Gelar Rapat Terkait Pengusulan Prop...</td>
+      <td>Okt 17, 2022</td>
+      <td>https://www.detikinews.com/bapemperda-gelar-ra...</td>
+      <td>Bengkalis, detikinews – Bapemperda DPRD Kabupa...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Sosial</td>
+      <td>Bupati Kasmarni Serahkan Remisi Kepada 858 Ora...</td>
+      <td>Agu 17, 2022</td>
+      <td>https://www.detikinews.com/bupati-kasmarni-ser...</td>
+      <td>BENGKALIS, detikinews.com – Bupati Bengkalis K...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Sosial</td>
+      <td>DPRD Kepulauan Gelar Paripurna PAW, Fauzi Hasa...</td>
+      <td>Jul 20, 2022</td>
+      <td>https://www.detikinews.com/dprd-kepulauan-gela...</td>
+      <td>Meranti, detikinews.com – DPRD Kabupaten Kepul...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Sosial</td>
+      <td>Ketua TP PKK Rohul Hadiri Langsung Puncak Peri...</td>
+      <td>Jun 2, 2022</td>
+      <td>https://www.detikinews.com/ketua-tp-pkk-rohul-...</td>
+      <td>Pekanbaru, detikinews.com — Ketua Tim Penggera...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Sosial</td>
+      <td>Bupati Rohul Lantik Muhammad Zaki, S.STP,M.Si ...</td>
+      <td>Apr 19, 2022</td>
+      <td>https://www.detikinews.com/bupati-rohul-lantik...</td>
+      <td>ROKAN HULU, detikinews.com – Bertepatan dengan...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Sosial</td>
+      <td>Asisten Pemkesra Fauzi Sebut, Bujang Kampung W...</td>
+      <td>Mar 26, 2022</td>
+      <td>https://www.detikinews.com/asisten-pemkesra-fa...</td>
+      <td>SIAK, detikinews.com — Bujang Kampung atau Bup...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Sosial</td>
+      <td>Kejaksaan Negeri Siak Telah Menginisiasi Pembe...</td>
+      <td>Des 15, 2021</td>
+      <td>https://www.detikinews.com/kejaksaan-negeri-si...</td>
+      <td>SIAK, detikinews.com — Sebagai salah satu prog...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Sosial</td>
+      <td>Terapkan Digitalisasi, Kota Pekanbaru Capai IE...</td>
+      <td>Nov 15, 2021</td>
+      <td>https://www.detikinews.com/terapkan-digitalisa...</td>
+      <td>Pekanbaru, detikinews.com — Sejalan dengan kem...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Sosial</td>
+      <td>Alfedri dan Husni Dampingi Wamendes PDTT Tinja...</td>
+      <td>Okt 25, 2021</td>
+      <td>https://www.detikinews.com/alfedri-dan-husni-d...</td>
+      <td>SIAK, detikinews.com — Didampingi Gubernur Ria...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Sosial</td>
+      <td>Asisten Adum Jamaluddin Ikuti Kegiatan Anugrah...</td>
+      <td>Sep 28, 2021</td>
+      <td>https://www.detikinews.com/asisten-adum-jamalu...</td>
+      <td>SIAK, detikinews.com — Asisten Administrasi Um...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Sosial</td>
+      <td>Bupati Siak Alfedri Ikuti Pembekalan Kepemimpi...</td>
+      <td>Sep 13, 2021</td>
+      <td>https://www.detikinews.com/bupati-siak-alfedri...</td>
+      <td>SIAK, detikinews.com — Bupati Siak Alfedri, me...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Sosial</td>
+      <td>Pantau Sejumlah Tempat Sekda Siak Minta  Rumah...</td>
+      <td>Agu 15, 2021</td>
+      <td>https://www.detikinews.com/pantau-sejumlah-tem...</td>
+      <td>SIAK, detikinews.com — Sekretaris Daerah kabup...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Sosial</td>
+      <td>Banggar DPRD Kepulauan Meranti Sampaikan Catat...</td>
+      <td>Jul 13, 2021</td>
+      <td>https://www.detikinews.com/banggar-dprd-kepula...</td>
+      <td>SELATPANJANG, detikinews.com – Badan Anggaran ...</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Sosial</td>
+      <td>Sekda Siak Minta TP2GD Siak Bahas Tuntas Mekan...</td>
+      <td>Jun 23, 2021</td>
+      <td>https://www.detikinews.com/sekda-siak-minta-tp...</td>
+      <td>SIAK, DetikiNews.com — Muhammad Abdul Jalil Mu...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Sosial</td>
+      <td>Menyasar Keluarga tak Mampu, Pemkab Siak Buka ...</td>
+      <td>Mei 16, 2021</td>
+      <td>https://www.detikinews.com/menyasar-keluarga-t...</td>
+      <td>SIAK, detikinews.com — Pemerintah Kabupaten Si...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Sosial</td>
+      <td>DPD PWRI Riau Kunjungi DPC PWRI Rohul , Sekali...</td>
+      <td>Mar 14, 2021</td>
+      <td>https://www.detikinews.com/dpd-pwri-riau-kunju...</td>
+      <td>ROKAN HULU , detikinews.com — DPD PWRI (Dewan ...</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Sosial</td>
+      <td>Segera Daftarkan ke Kesbangpol, JOIN Rohul Sia...</td>
+      <td>Des 8, 2020</td>
+      <td>https://www.detikinews.com/segera-daftarkan-ke...</td>
+      <td>ROKANHULU, Detikinews.com — Dewan Pimpinan Cab...</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Sosial</td>
+      <td>Ini yang Dilakukan Kejari Kampar, Jelang Hari ...</td>
+      <td>Jul 15, 2020</td>
+      <td>https://www.detikinews.com/ini-yang-dilakukan-...</td>
+      <td>BANGKINANG Detikinews.com – Dalam rangka menya...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Sosial</td>
+      <td>Sempena Harganas ke-27, ini yang Dilakukan For...</td>
+      <td>Jun 24, 2020</td>
+      <td>https://www.detikinews.com/sempena-harganas-ke...</td>
+      <td>BANGKINANG, Detikinews.com — Dalam rangka meme...</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Sosial</td>
+      <td>Tenaga Medis RSUD Meranti di BLK Terima Parsel...</td>
+      <td>Jun 17, 2020</td>
+      <td>https://www.detikinews.com/tenaga-medis-rsud-m...</td>
+      <td>MERANTI, Detikinews.com — Pihak Satlantas Polr...</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Sosial</td>
+      <td>Progress PSBB Sesuai Harapan, Bupati Siak Usul...</td>
+      <td>Mei 28, 2020</td>
+      <td>https://www.detikinews.com/progress-psbb-sesua...</td>
+      <td>SIAK, Detikinews.com — Pelaksanaan Pembatasan ...</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Sosial</td>
+      <td>Pemkab Siak Ikuti Doa Kebangsaan dan Kemanusia...</td>
+      <td>Mei 16, 2020</td>
+      <td>https://www.detikinews.com/pemkab-siak-ikuti-d...</td>
+      <td>SIAK, Detikinews.com — Pemkab Siak, mengikuti ...</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Sosial</td>
+      <td>Sah PSBB di Kampar, Pemkab Minta Petunjuk Gubri</td>
+      <td>Mei 13, 2020</td>
+      <td>https://www.detikinews.com/sah-psbb-di-kampar-...</td>
+      <td>Kampar, Detikinews.com — Kementerian Kesehatan...</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Sosial</td>
+      <td>Kabupaten Siak Memperketat 8 Titik Pintu Masuk...</td>
+      <td>Mei 3, 2020</td>
+      <td>https://www.detikinews.com/kabupaten-siak-memp...</td>
+      <td>Siak, Detikinews.com — Pemerintah Kabupaten Si...</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Sosial</td>
+      <td>Polres Rohul Adakan Giat Dapur Umum dan Bansos...</td>
+      <td>Apr 26, 2020</td>
+      <td>https://www.detikinews.com/polres-rohul-adakan...</td>
+      <td>ROKAN HULU, Detikinews.com – detikinews.com Di...</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Sosial</td>
+      <td>Pemko Diminta Serius, Gubri Syamsuar Sebut Pel...</td>
+      <td>Apr 20, 2020</td>
+      <td>https://www.detikinews.com/pemko-diminta-seriu...</td>
+      <td>Pekanbaru, Detikinews.com — Kota Pekanbaru dan...</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Sosial</td>
+      <td>Bupati Rohul H. Sukiman Video Conference denga...</td>
+      <td>Apr 15, 2020</td>
+      <td>https://www.detikinews.com/bupati-rohul-h-suki...</td>
+      <td>Pasir Pengaraian, Detikinews.com — Untuk memas...</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Sosial</td>
+      <td>Bantu Gugus Tugas, KBTPM Selatpanjang Serahkan...</td>
+      <td>Apr 7, 2020</td>
+      <td>https://www.detikinews.com/bantu-gugus-tugas-k...</td>
+      <td>SELATPANJANG, Detikinews.com —  Dorongan rasa ...</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Sosial</td>
+      <td>Tim Gabungan Semprot Desinfektan di Bandara Tu...</td>
+      <td>Mar 27, 2020</td>
+      <td>https://www.detikinews.com/tim-gabungan-sempro...</td>
+      <td>Rokan Hulu, detikinews.com — Tim gabungan yang...</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Sosial</td>
+      <td>Babinsa Koramil 14/Kepenuhan Kodim 0313/Kpr Ko...</td>
+      <td>Mar 21, 2020</td>
+      <td>https://www.detikinews.com/babinsa-koramil-14-...</td>
+      <td>Rokan Hulu, detikinews.com — Babinsa Koramil 1...</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Sosial</td>
+      <td>Hadiri Pertemuan dan Apel Kesiapsiagaan Karhut...</td>
+      <td>Mar 10, 2020</td>
+      <td>https://www.detikinews.com/hadiri-pertemuan-da...</td>
+      <td>Pekanbaru, Detikinews.com – Sebagai bentuk kom...</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Sosial</td>
+      <td>3 Unit Rumah Habis di Lahap si Jago Merah</td>
+      <td>Feb 26, 2020</td>
+      <td>https://www.detikinews.com/3-unit-rumah-habis-...</td>
+      <td>BENGKALIS, Detikinews.com – Kawasan padat pend...</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Olahraga</td>
+      <td>Bupati Rohil Lepas Atlet Wushu Ikuti Selekda P...</td>
+      <td>Jul 20, 2023</td>
+      <td>https://www.detikinews.com/bupati-rohil-lepas-...</td>
+      <td>Rohil, detikinews.com — Bupati Rokan Hilir (Ro...</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Olahraga</td>
+      <td>Porprov X Riau, Inhu Berhasil Kumpulkan 5 Meda...</td>
+      <td>Nov 17, 2022</td>
+      <td>https://www.detikinews.com/porprov-x-riau-inhu...</td>
+      <td>RENGAT, detikinews.com — Memasuki hari kelima ...</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Olahraga</td>
+      <td>Bupati Kasmarni Serahkan Sembako pada Warga Te...</td>
+      <td>Apr 7, 2022</td>
+      <td>https://www.detikinews.com/bupati-kasmarni-ser...</td>
+      <td>BENGKALIS, detikinews.com – Bupati Bengkalis K...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Olahraga</td>
+      <td>Tengku Anggito Wicaksono Atlet Sepatu Roda Sia...</td>
+      <td>Okt 1, 2021</td>
+      <td>https://www.detikinews.com/tengku-anggito-wica...</td>
+      <td>SIAK, detikinews.com — Atlet Sepatu Roda asal ...</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Olahraga</td>
+      <td>Husni Merza Tegaskan Pemkab Siak Komitmen Perh...</td>
+      <td>Jun 25, 2021</td>
+      <td>https://www.detikinews.com/husni-merza-tegaska...</td>
+      <td>SIAK, detikinews.com — Pemerintah Kabupaten Si...</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Olahraga</td>
+      <td>Sekda Kampar ; Pemkab Kampar Lakukan Upaya Mak...</td>
+      <td>Apr 2, 2020</td>
+      <td>https://www.detikinews.com/sekda-kampar-pemkab...</td>
+      <td>XIII KOTO KAMPAR, Detikinews.com – Terkait vir...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9f0b0e55-ae12-4ba4-b7cb-147a47d05df3')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9f0b0e55-ae12-4ba4-b7cb-147a47d05df3 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9f0b0e55-ae12-4ba4-b7cb-147a47d05df3');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-6746b71b-aab0-45bf-953e-0d4b873c464d">
+  <button class="colab-df-quickchart" onclick="quickchart('df-6746b71b-aab0-45bf-953e-0d4b873c464d')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-6746b71b-aab0-45bf-953e-0d4b873c464d button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lda_.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LDA Topic Modelling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="preprocessingberita.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Preprocessing dan implementasi Cosinus Similarity</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-beautifulsoup4">Install beautifulsoup4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-library">Install library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data-dari-detikinews-com">Crawling data dari detikinews.com</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Naufal Abdullah R.Z
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
